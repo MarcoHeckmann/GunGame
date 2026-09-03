@@ -1,0 +1,12 @@
+name: GunGame
+author: SkyDynamics
+version: '1.0'
+
+main: jp.softrain.gunGame.Main
+api-version: '1.21.11'
+load: POSTWORLD
+commands:
+  gungame:
+    aliases:
+      - gg
+

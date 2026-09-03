@@ -1,0 +1,188 @@
+#########################
+# Messages.yml
+##########################
+#
+# This file contains every message of the GunGame plugin.
+# Each section groups the messages by their use case.
+#
+# Placeholders:
+#   %prefix%     = The plugin prefix (%prefix% is always replaced by the "prefix" value)
+#   %map%        = The name of the map
+#   %victim%     = The name of the killed player
+#   %killer%     = The name of the killer
+#   %time%       = The remaining time until the map change
+#   %player%     = The player who performed the action
+#   %permission% = The required permission node
+#   %kills%      = The amount of kills
+#   %deaths%     = The amount of deaths
+#   %kd%         = The K/D ratio
+#   %reason%     = The error reason
+#
+# Color codes: §a = Green | §c = Red | §7 = Gray | §8 = Dark gray | §l = Bold
+##########################
+
+# ------------------------------------------------
+# GENERAL
+# ------------------------------------------------
+prefix: "§8[§a§lGunGame§8] §7"
+scoreboard-title: "§a§lGunGame"
+
+# ------------------------------------------------
+# CONSOLE
+# ------------------------------------------------
+console:
+  enabled: "§aGunGame enabled!"
+  disabled: "§aGunGame disabled!"
+  current-map: "§7Current map: §a%map%"
+
+# ------------------------------------------------
+# DATABASE
+# ------------------------------------------------
+database:
+  tables-created: "§a[Database] -> Tables created!"
+  connected: "§a[Database] Connection established successfully!"
+  invalid: "§c[Database] Connection invalid!"
+  failed: "§c[Database] Connection failed: %reason%"
+
+# ------------------------------------------------
+# SPAWN
+# ------------------------------------------------
+spawn:
+  not-set: "%prefix%§cThe spawn has not been set yet."
+  success: "%prefix%You have been §asuccessfully§7 teleported to the spawn."
+
+# ------------------------------------------------
+# SUCCESS
+# ------------------------------------------------
+success:
+  setspawn: "%prefix%The spawn for the map §a%map%§7 has been successfully set."
+  delspawn: "%prefix%The spawn for the map §a%map%§7 has been successfully deleted."
+
+# ------------------------------------------------
+# SPAWN PROTECTION
+# ------------------------------------------------
+spawn-protection:
+  already-setup: "%prefix%§cThe spawn protection has already been set."
+  pos1:
+    success: "%prefix%Position §a1§7 has been set."
+  pos2:
+    success: "%prefix%Position §a2§7 has been set. The spawn protection is now §asuccessfully§7 set up."
+
+# ------------------------------------------------
+# STATS (Kills/Deaths)
+# ------------------------------------------------
+stats:
+  killer: "%prefix%You killed §a%victim%§7."
+  victim: "%prefix%You were killed by §c%killer%§7."
+  no-killer: "%prefix%§cYou died."
+
+# ------------------------------------------------
+# ACTIONBAR
+# ------------------------------------------------
+actionbar:
+  no-map: "§7No map set. Set one with §a/setspawn <Map>"
+  current-map: "§7Current map: §a%map%§7 | Map change: §a%time%"
+
+# ------------------------------------------------
+# GUIS / INVENTORY TITLES
+# ------------------------------------------------
+guis:
+  force-map:
+    title: "§bForceMap"
+    item-pane: "§7"
+    item-map: "§b%map%"
+  stats:
+    title: "§bStats §8» §b%player%"
+    profile-head: "§b%player%"
+    kills: "§aKills §8» §f%kills%"
+    deaths: "§cDeaths §8» §f%deaths%"
+    kd: "§eKD §8» §f%kd%"
+    item-pane: "§7"
+
+# ------------------------------------------------
+# SCOREBOARD (Sidebar)
+# ------------------------------------------------
+scoreboard:
+  line-kills: "§a⚔ %kills% §8▍ §a☠ %deaths% §8▍ §a☮ Soon"
+  line-kd: "§aK/D %kd% §8▍ §a✪ Soon"
+  line-map: "§aMap %map%"
+  line-spacer-1: "§7 "
+  line-spacer-2: "§7  "
+  line-spacer-3: "§7   "
+  line-spacer-4: "§7    "
+  line-top: "§8§m                 "
+  line-bottom: "§8§m                "
+
+# ------------------------------------------------
+# ERRORS
+# ------------------------------------------------
+errors:
+  wrong-args: "%prefix%Please use §a/gungame§7 <§asetspawn§7 | §adelspawn§7 | §aspawn§7>"
+  no-permission: "%prefix%§cYou don't have the permission §a%permission%§7."
+  pos1:
+    wrong-args: "%prefix%Please use §a/gungame pos1§7 <§aMap§7>"
+    map-dont-exists: "%prefix%§cNo spawn exists for the map §a%map%§7."
+  pos2:
+    wrong-args: "%prefix%Please use §a/gungame pos2§7 <§aMap§7>"
+    map-dont-exists: "%prefix%§cNo spawn exists for the map §a%map%§7."
+  setspawn:
+    wrong-args: "%prefix%Please use §a/gungame setspawn§7 <§aMap§7>"
+    already-exists: "%prefix%§cA spawn already exists for the map §a%map%§7."
+    contains-dot: "%prefix%§cThe map name must not contain dots."
+  delspawn:
+    wrong-args: "%prefix%Please use §a/gungame delspawn§7 <§aMap§7>"
+    not-exists: "%prefix%§cNo spawn exists for the map §a%map%§7."
+  spawn:
+    wrong-args: "%prefix%Please use §a/gungame spawn§7 <§aMap§7>"
+  forcemap:
+    no-maps: "%prefix%§cThere are currently no maps available."
+    map-not-exists: "%prefix%§cNo spawn exists for the map §a%map%§7."
+    same-map: "%prefix%§cThe map §a%map%§c is already the current map."
+
+# ------------------------------------------------
+# GUNGAME COMMANDS
+# ------------------------------------------------
+gungame:
+  maps:
+    is-empty: "%prefix%§cThere are currently no maps available."
+    success: "%prefix%Available maps§7:"
+    entry: "§7- §a%map%"
+  forcemap:
+    wrong-args: "%prefix%Please use §a/gungame forcemap§7 <§aMap§7>"
+    changed-by-user: "%prefix%The map was changed to §a%map%§7 by §a%player%§7."
+    issuer: "%prefix%You have successfully changed the map to §a%map%§7."
+    title:
+      map-change:
+        title: "%prefix%§a§lNew Map"
+        subtitle: "§7You are now playing on §a§l%map%"
+        fade-in: 10
+        stay: 70
+        fade-out: 20
+  error:
+    mapchange:
+      no-map-exists: "%prefix%§cThe map change failed because no maps exist."
+      console-no-maps: "§cAll broken :( no maps :c"
+  title:
+    map-change:
+      title: "%prefix%§a§lNew Map"
+      subtitle: "§7You are now playing on §a§l%map%"
+      fade-in: 10
+      stay: 70
+      fade-out: 20
+  stats:
+    wrong-args: "%prefix%Please use §a/gungame stats§7 <§aPlayer§7>"
+  profile:
+    not-a-player: "%prefix%§cThis player was not found in the database."
+  editor:
+    activate: "%prefix%The §aedit mode§7 has been activated."
+    deactivate: "%prefix%The §aedit mode§7 has been deactivated."
+    others:
+      not-online: "%prefix%§cThe player is currently not online."
+      activate: "%prefix%The §aedit mode§7 has been activated for §a%player%§7."
+      activate.victim: "%prefix%The §aedit mode§7 has been activated for you."
+      deactivate: "%prefix%The §aedit mode§7 has been deactivated for §a%player%§7."
+      deactivate.victim: "%prefix%The §aedit mode§7 has been deactivated for you."
+  editors:
+    empty: "%prefix%§cThere are currently no editors active."
+    title: "%prefix%Active editors§7:"
+    list: "§7- §a%player%"
