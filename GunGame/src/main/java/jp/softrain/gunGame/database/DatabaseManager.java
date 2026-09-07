@@ -21,9 +21,9 @@ public class DatabaseManager {
 
         HikariConfig config = new HikariConfig();
 
-        config.setJdbcUrl("jdbc:mysql://45.84.196.164:3306/test");
+        config.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/test");
         config.setUsername("test");
-        config.setPassword("i3~RfBkR31r?tlwt");
+        config.setPassword("test");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
