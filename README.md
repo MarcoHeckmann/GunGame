@@ -56,7 +56,7 @@
 1. Download the latest JAR from the [Releases](https://github.com/MarcoHeckmann/GunGame/releases) page
 2. Place the JAR file into your server's `plugins/` folder
 3. Start the server once so the plugin generates its default `messages.yml` and `spawns.yml` files
-4. Stop the server and configure your MySQL connection in `DatabaseManager.java` (see [Configuration](#-configuration))
+4. Stop the server and configure the MySQL connection in `DatabaseManager.java` before using the plugin (see [Configuration](#-configuration))
 5. Restart the server
 
 ## 🗺️ Setup
@@ -133,17 +133,9 @@ Created automatically; stores the spawns and spawn-protection regions of all map
 
 ### `Database`
 
-The MySQL credentials currently live in `DatabaseManager.java`. Adjust them there:
-
-```java
-config.setJdbcUrl("jdbc:mysql://<HOST>:<PORT>/<DATABASE>");
-config.setUsername("<USER>");
-config.setPassword("<PASSWORD>");
-```
+The database connection is currently configured in `GunGame/src/main/java/jp/softrain/gunGame/database/DatabaseManager.java`. Before building or running the plugin, set the JDBC URL, username, password and connection-pool size for your own MySQL server. The repository does not yet load these values from a generated configuration file; do not use the committed development settings on a live server.
 
 The `stats` table is created on startup and stores each player's UUID, kills, deaths and K/D ratio.
-
-> ⚠️ **Warning:** The credentials in the code are for development only. For production, move them into a configuration file.
 
 ## 🎮 Gameplay & Levels
 
@@ -163,10 +155,11 @@ A kill ranks you up and grants the next loadout; a death resets you to level 0. 
 Make sure you have [Maven](https://maven.apache.org/) and Java 21+ installed, then run:
 
 ```bash
+cd GunGame
 mvn clean package
 ```
 
-The compiled JAR will be located in the `target/` folder.
+The compiled JAR will be located in `GunGame/target/`.
 
 ## 🤝 Contributing
 
